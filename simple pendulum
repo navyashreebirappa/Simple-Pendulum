@@ -1,0 +1,30 @@
+//For Linear case, saved as rlinear M file.
+//Code:
+
+function yp = rlinear (t,y)
+yp = [ y(2); ((-g/l)*(y(1)))];
+
+
+//For Non-Linear case, saved as non-linear M file.
+//Code:
+
+function yp = non-linear (t,y)
+yp = [ y(2); ((-g/l)* sin(y(1)))];
+//(hint: use -163.5 for -(g/l), since l=3cm, m=5 and g= 981cm)
+
+Main case code:
+
+tspan = [0 5];
+y0 = [1.57;0];
+[t,y] = ode45('rlinear',tspan,y0)
+plot(t,y(:,1))
+grid on;
+xlabel(‘Time’)
+ylabel(‘Theta’)
+title(‘Theta Vs Time’)
+hold on;
+
+//To plot for linear use [t,y] = ode45('rlinear',tspan,y0) in main case
+//To plot for non-linear use [t,y] = ode45('non-linear',tspan,y0) in main case
+//To plot angular velocity change plot to plot(t,y(:,2) in main case
+
